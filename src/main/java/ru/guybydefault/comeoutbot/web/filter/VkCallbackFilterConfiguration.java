@@ -24,7 +24,7 @@ public class VkCallbackFilterConfiguration {
     public FilterRegistrationBean initFilterRegistrationBean(SecretKeyVerificationFilter secretKeyVerificationFilter) {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(secretKeyVerificationFilter);
-        filterRegistrationBean.addUrlPatterns(vkCallbackProperties.getMainUrl(), vkCallbackProperties.getConfirmationUrl());
+        filterRegistrationBean.addUrlPatterns(vkCallbackProperties.getMainUrl());
         filterRegistrationBean.setOrder(2);
         return filterRegistrationBean;
     }

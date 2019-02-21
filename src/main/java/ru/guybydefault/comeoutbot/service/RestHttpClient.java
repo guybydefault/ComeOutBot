@@ -1,6 +1,7 @@
 package ru.guybydefault.comeoutbot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.converter.StringHttpMessageConverter;
