@@ -65,6 +65,8 @@ public class CallbackEventDeserializerFilter implements Filter {
                 servletContext.log("IO is in trouble", ex);
             }
             httpServletResponse.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+            chain.doFilter(request, response);
         }
     }
 
