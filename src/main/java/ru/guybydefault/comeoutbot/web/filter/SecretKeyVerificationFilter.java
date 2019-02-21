@@ -37,14 +37,12 @@ public class SecretKeyVerificationFilter implements Filter {
         CallbackEvent callbackEvent = (CallbackEvent) request.getAttribute("event");
 
         if (callbackEvent.getSecret() == null) {
-            ((HttpServletResponse) response).sendError(HttpServletResponse.SC_FORBIDDEN, "Secret key is required");
             servletContext.log("Authentication failed - secret key was not provided");
             httpServletResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Secret key not provided");
             return;
         }
 
         if (!callbackEvent.getSecret().equals(vkCallbackProperties.getSecretKey())) {
-            ((HttpServletResponse) response).sendError(HttpServletResponse.SC_FORBIDDEN, "Secret key is wrong");
             servletContext.log("Authentication failed - secret key " + callbackEvent.getSecret() + " is wrong");
             httpServletResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong secret key");
             return;
