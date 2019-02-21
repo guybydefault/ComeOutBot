@@ -3,7 +3,7 @@ package ru.guybydefault.comeoutbot.api.object;
 public class Error {
     private Integer errorCode;
 
-    private Integer errorMsg;
+    private String errorMsg;
 
     private RequestParam[] requestParams;
 
@@ -18,11 +18,11 @@ public class Error {
         this.errorCode = errorCode;
     }
 
-    public Integer getErrorMsg() {
+    public String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(Integer errorMsg) {
+    public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
     }
 
@@ -33,4 +33,7 @@ public class Error {
     public void setRequestParams(RequestParam[] requestParams) {
         this.requestParams = requestParams;
     }
+
+
+
 }
