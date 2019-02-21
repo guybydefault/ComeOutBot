@@ -2,14 +2,13 @@ package ru.guybydefault.comeoutbot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.guybydefault.comeoutbot.VkApiProperties;
+import ru.guybydefault.comeoutbot.api.callback.event.CallbackEvent;
 import ru.guybydefault.comeoutbot.api.callback.event.CallbackEventType;
 import ru.guybydefault.comeoutbot.api.callback.event.NewMessageEvent;
 import ru.guybydefault.comeoutbot.api.communication.messages.MessageSendRequest;
 import ru.guybydefault.comeoutbot.api.communication.messages.MessageSentResponse;
-import ru.guybydefault.comeoutbot.api.service.VkApi;
-import ru.guybydefault.comeoutbot.api.callback.event.CallbackEvent;
-import ru.guybydefault.comeoutbot.api.service.RestHttpClient;
-import ru.guybydefault.comeoutbot.VkApiProperties;
+import ru.guybydefault.comeoutbot.api.communication.VkApi;
 
 @Service
 public class QuotationBot implements CallbackEventHandler {
@@ -34,6 +33,7 @@ public class QuotationBot implements CallbackEventHandler {
             if (newMessageEvent.getMessage().getText().contains("stride-bot")) {
                 MessageSendRequest messageSendRequest = new MessageSendRequest(vkApiProperties.getToken(), newMessageEvent.getMessage().getFromId(), "You said: " + newMessageEvent.getMessage().getText());
                 MessageSentResponse messageSentResponse = vkApi.getMessages().sendMessage(restHttpClient, messageSendRequest);
+                // TODO implement jackson custom type id resolver to handle all other possible responses
             }
         }
     }

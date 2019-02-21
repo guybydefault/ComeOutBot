@@ -20,7 +20,7 @@ public class AbstractApiRequest {
     /**
      * VK API version
      */
-    protected final String apiVersion = "5.92";
+    protected final String apiVersion = "5.92"; // probably some of requests will require other versions
 
     public AbstractApiRequest(String accessToken) {
         this.accessToken = accessToken;

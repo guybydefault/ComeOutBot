@@ -2,8 +2,7 @@ package ru.guybydefault.comeoutbot.api.communication;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
-import ru.guybydefault.comeoutbot.api.communication.AbstractApiRequest;
-import ru.guybydefault.comeoutbot.api.service.RestHttpClient;
+import ru.guybydefault.comeoutbot.service.RestHttpClient;
 
 public abstract class AbstractApiMethod {
 

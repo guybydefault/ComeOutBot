@@ -1,7 +1,7 @@
 package ru.guybydefault.comeoutbot.api.communication.messages;
 
 import ru.guybydefault.comeoutbot.api.communication.AbstractApiMethod;
-import ru.guybydefault.comeoutbot.api.service.RestHttpClient;
+import ru.guybydefault.comeoutbot.service.RestHttpClient;
 
 import java.util.Random;
 
