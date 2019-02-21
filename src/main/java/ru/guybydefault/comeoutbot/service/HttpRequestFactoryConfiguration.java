@@ -1,4 +1,4 @@
-package ru.guybydefault.comeoutbot.api.service;
+package ru.guybydefault.comeoutbot.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

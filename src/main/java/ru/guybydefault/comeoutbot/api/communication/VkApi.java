@@ -1,4 +1,4 @@
-package ru.guybydefault.comeoutbot.api.service;
+package ru.guybydefault.comeoutbot.api.communication;
 
 import org.springframework.stereotype.Service;
 import ru.guybydefault.comeoutbot.api.communication.messages.MessagesApiMethod;
