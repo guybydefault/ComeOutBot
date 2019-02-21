@@ -21,6 +21,8 @@ public class QuotationBot implements CallbackEventHandler {
 
     private VkApiProperties vkApiProperties;
 
+    private static final String BOT_NAME = "stride-bot";
+
     @Autowired
     public QuotationBot(RestHttpClient restHttpClient, VkApi vkApi, VkApiProperties vkApiProperties) {
         this.restHttpClient = restHttpClient;
@@ -32,14 +34,15 @@ public class QuotationBot implements CallbackEventHandler {
     public void handle(CallbackEvent callbackEvent) {
         if (callbackEvent.getCallBackEventType() == CallbackEventType.MESSAGE_NEW) {
             NewMessageEvent newMessageEvent = (NewMessageEvent) callbackEvent;
-            if (newMessageEvent.getMessage().getText().contains("stride-bot")) {
+            if (newMessageEvent.getMessage().getText().contains(BOT_NAME)) {
                 MessageSendRequest messageSendRequest = new MessageSendRequest(vkApiProperties.getToken(), newMessageEvent.getMessage().getFromId(), "You said: " + newMessageEvent.getMessage().getText());
+                messageSendRequest.setUserId(newMessageEvent.getMessage().getFromId());
                 ApiRequestResult<MessageSentResponse> response = vkApi.getMessages().sendMessage(restHttpClient, messageSendRequest);
                 if (response.getError() != null) {
                     switch (VkErrorType.findByCode(response.getError().getErrorCode())) {
                         case INTERNAL_SERVER_ERROR:
                         case UNKNOWN_ERROR:
-                            // retry
+                            // TODO retry?
                     }
                 }
             }

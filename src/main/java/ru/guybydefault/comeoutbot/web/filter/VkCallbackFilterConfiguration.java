@@ -39,14 +39,6 @@ public class VkCallbackFilterConfiguration {
     }
 
     @Bean
-    public ObjectMapper initVkCallbackEventObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setPropertyNamingStrategy(
-                PropertyNamingStrategy.SNAKE_CASE);
-        return objectMapper;
-    }
-
-    @Bean
     public SecretKeyVerificationFilter initSecretKeyVerificationFilter() {
         return new SecretKeyVerificationFilter(vkCallbackProperties, vkApiProperties);
     }
@@ -54,6 +46,14 @@ public class VkCallbackFilterConfiguration {
     @Bean
     public CallbackEventDeserializerFilter initRequestMapperFilter(ObjectMapper objectMapper, Validator validator) {
         return new CallbackEventDeserializerFilter(objectMapper, validator);
+    }
+
+    @Bean("snakeCaseObjectMapper")
+    public ObjectMapper initVkResponseObjectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setPropertyNamingStrategy(
+                PropertyNamingStrategy.SNAKE_CASE);
+        return objectMapper;
     }
 
 }
