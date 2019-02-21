@@ -19,7 +19,7 @@
 
 ![получение token](readme/token.png)
 
-- Получить token доступа ('создать ключ'), указать его в поле app.vk.api.token в application.properties. Он необходим для отправки сообщений ботом при доступе к ВК API.
+- Получить token доступа ('создать ключ') с правами на управление сообщениями и указать его в поле app.vk.api.token в application.properties. Он необходим для отправки сообщений ботом при доступе к ВК API.
 ```
 app.vk.api.token=39ecbexamplefasfad50d02d79examplebfas3da1b4540cfe97b4example09af7091a172d211f
 ```
