@@ -6,9 +6,11 @@ import ru.guybydefault.comeoutbot.VkApiProperties;
 import ru.guybydefault.comeoutbot.api.callback.event.CallbackEvent;
 import ru.guybydefault.comeoutbot.api.callback.event.CallbackEventType;
 import ru.guybydefault.comeoutbot.api.callback.event.NewMessageEvent;
+import ru.guybydefault.comeoutbot.api.communication.ApiRequestResult;
+import ru.guybydefault.comeoutbot.api.communication.VkApi;
+import ru.guybydefault.comeoutbot.api.communication.VkErrorType;
 import ru.guybydefault.comeoutbot.api.communication.messages.MessageSendRequest;
 import ru.guybydefault.comeoutbot.api.communication.messages.MessageSentResponse;
-import ru.guybydefault.comeoutbot.api.communication.VkApi;
 
 @Service
 public class QuotationBot implements CallbackEventHandler {
@@ -32,8 +34,14 @@ public class QuotationBot implements CallbackEventHandler {
             NewMessageEvent newMessageEvent = (NewMessageEvent) callbackEvent;
             if (newMessageEvent.getMessage().getText().contains("stride-bot")) {
                 MessageSendRequest messageSendRequest = new MessageSendRequest(vkApiProperties.getToken(), newMessageEvent.getMessage().getFromId(), "You said: " + newMessageEvent.getMessage().getText());
-                MessageSentResponse messageSentResponse = vkApi.getMessages().sendMessage(restHttpClient, messageSendRequest);
-                // TODO implement jackson custom type id resolver to handle all other possible responses
+                ApiRequestResult<MessageSentResponse> response = vkApi.getMessages().sendMessage(restHttpClient, messageSendRequest);
+                if (response.getError() != null) {
+                    switch (VkErrorType.findByCode(response.getError().getErrorCode())) {
+                        case INTERNAL_SERVER_ERROR:
+                        case UNKNOWN_ERROR:
+                            // retry
+                    }
+                }
             }
         }
     }

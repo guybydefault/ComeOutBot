@@ -1,28 +1,28 @@
 package ru.guybydefault.comeoutbot.api.object;
 
 public class Error {
-    private int errorCode;
+    private Integer errorCode;
 
-    private int errorMsg;
+    private Integer errorMsg;
 
     private RequestParam[] requestParams;
 
     public Error() {
     }
 
-    public int getErrorCode() {
+    public Integer getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(int errorCode) {
+    public void setErrorCode(Integer errorCode) {
         this.errorCode = errorCode;
     }
 
-    public int getErrorMsg() {
+    public Integer getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(int errorMsg) {
+    public void setErrorMsg(Integer errorMsg) {
         this.errorMsg = errorMsg;
     }
 
