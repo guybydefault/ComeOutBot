@@ -27,7 +27,7 @@ app.vk.api.token=39ecbexamplefasfad50d02d79examplebfas3da1b4540cfe97b4example09a
 
 ![добавление сервера в callback api](readme/callback.png)
 
-- Придумать и указать ВКонтакте secretKey, такой же secretKey указать в поле app.vk.callback.secretKey
+- Придумать и указать ВКонтакте secretKey. Такой же secretKey указать в поле app.vk.callback.secretKey
 ```
 app.vk.callback.secretKey=mysecretkey
 ```
@@ -41,7 +41,7 @@ app.vk.callback.confirmationCode=608f7228
 ```
 - Перейти на вкладку 'типы событий' и включить уведомление о новых входящих сообщениях 
 
-![включение уведомления](readme/event_type)
+![включение уведомления](readme/event_type.png)
 
 - Запустить Spring Boot приложение и подтвердить CallBack сервер ВКонтакте (бот ответит на тестовый запрос ВК кодом подтверждения confirmationCode)
 - После этого ВК  начнет уведомлять CallBack сервер о событиях, далее можно написать в ЛС сообщества, и бот ответит, если в сообщении будет присутствовать кодовая фраза 'stride-bot'
